@@ -35,30 +35,6 @@ export const create = (
   }
 };
 
-export const updateDiary = (schema: any, req: Request): Diary | Response => {
-  try {
-    const diary = schema.diaries.find(req.params.id);
-    const data = JSON.parse(req.requestBody) as Partial<Diary>;
-    const now = dayjs().format();
-    diary.update({
-      ...data,
-      updatedAt: now,
-    });
-    return diary.attrs as Diary;
-  } catch (error) {
-    return handleErrors(error, "Failed to update Diary.");
-  }
-};
-
-export const getDiaries = (schema: any, req: Request): Diary[] | Response => {
-  try {
-    const user = schema.users.find(req.params.id);
-    return user.diary as Diary[];
-  } catch (error) {
-    return handleErrors(error, "Could not get user diaries.");
-  }
-};
-
 export const addEntry = (
   schema: any,
   req: Request
@@ -86,6 +62,15 @@ export const addEntry = (
   }
 };
 
+export const getDiaries = (schema: any, req: Request): Diary[] | Response => {
+  try {
+    const user = schema.users.find(req.params.id);
+    return user.diary as Diary[];
+  } catch (error) {
+    return handleErrors(error, "Could not get user diaries.");
+  }
+};
+
 export const getEntries = (
   schema: any,
   req: Request
@@ -95,6 +80,21 @@ export const getEntries = (
     return diary.entry;
   } catch (error) {
     return handleErrors(error, "Failed to get Diary entries.");
+  }
+};
+
+export const updateDiary = (schema: any, req: Request): Diary | Response => {
+  try {
+    const diary = schema.diaries.find(req.params.id);
+    const data = JSON.parse(req.requestBody) as Partial<Diary>;
+    const now = dayjs().format();
+    diary.update({
+      ...data,
+      updatedAt: now,
+    });
+    return diary.attrs as Diary;
+  } catch (error) {
+    return handleErrors(error, "Failed to update Diary.");
   }
 };
 
