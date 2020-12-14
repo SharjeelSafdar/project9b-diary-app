@@ -4,6 +4,7 @@ import user from "./routes/user";
 import * as diary from "./routes/diary";
 
 export const handleErrors = (error: any, message = "An error ocurred") => {
+  console.error("Error: ", error);
   return new Response(400, undefined, {
     data: {
       message,
