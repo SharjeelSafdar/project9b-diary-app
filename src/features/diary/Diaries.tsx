@@ -89,10 +89,12 @@ const Diaries: FC = () => {
           <DiaryEntriesList />
         </Route>
         <Route path="/">
-          <button onClick={createDiary}>Create New</button>
-          {diaries.map((diary, idx) => (
-            <DiaryTile key={idx} diary={diary} />
-          ))}
+          <div>
+            <button onClick={createDiary}>Create New</button>
+            {diaries.map((diary, idx) => (
+              <DiaryTile key={idx} diary={diary} />
+            ))}
+          </div>
         </Route>
       </Routes>
     </div>
