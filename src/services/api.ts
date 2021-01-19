@@ -1,5 +1,5 @@
 import axios, { AxiosInstance, AxiosResponse, AxiosError } from "axios";
-import { showAlert } from "../util";
+import { showAlert } from "./sweetAlertHelpers/util";
 
 const http: AxiosInstance = axios.create({
   baseURL: "https://diaries.app",

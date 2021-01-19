@@ -6,7 +6,7 @@ import { User } from "../../interfaces/user.interface";
 import { Diary } from "../../interfaces/diary.interface";
 import { setUser } from "../auth/userSlice";
 import { getDiaryDataFromUser } from "../../services/sweetAlertHelpers";
-import { showAlert } from "../../util";
+import { showAlert } from "../../services/sweetAlertHelpers/util";
 import { deleteEntry } from "../entry/entriesSlice";
 
 export const addNewDiary = createAsyncThunk(

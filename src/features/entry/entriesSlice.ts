@@ -7,7 +7,7 @@ import { Entry } from "../../interfaces/entry.interface";
 import { getEntryDataFromUser } from "../../services/sweetAlertHelpers";
 import http from "../../services/api";
 import { updateDiary } from "../diary/diariesSlice";
-import { showAlert } from "../../util";
+import { showAlert } from "../../services/sweetAlertHelpers/util";
 
 export const getEntries = createAsyncThunk(
   "entries/getEntries",
