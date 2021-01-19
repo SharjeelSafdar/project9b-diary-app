@@ -38,7 +38,7 @@ export const create = (
 export const addEntry = (
   schema: any,
   req: Request
-): { diary: Diary; entry: Entry } | Response => {
+): { updatedDiary: Diary; newEntry: Entry } | Response => {
   try {
     const diary = schema.diaries.find(req.params.id);
     const { title, content } = JSON.parse(req.requestBody) as Partial<Entry>;
@@ -54,8 +54,8 @@ export const addEntry = (
       updatedAt: now,
     });
     return {
-      diary: diary.attrs,
-      entry: entry.attrs,
+      updatedDiary: diary.attrs,
+      newEntry: entry.attrs,
     };
   } catch (error) {
     return handleErrors(error, "Failed to save entry.");
