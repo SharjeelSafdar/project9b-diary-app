@@ -12,8 +12,7 @@ import { useNavigate } from "react-router-dom";
 
 import { RootState } from "../../store/rootReducer";
 import { useAppDispatch } from "../../store";
-import { saveToken, setAuthState } from "../auth/authSlice";
-import { setUser } from "../auth/userSlice";
+import { logOut } from "../auth/authSlice";
 import { useStyles } from "./DrawerMenu.styles";
 
 interface DrawerMenuProps extends Pick<DrawerProps, "open" | "onClose"> {}
@@ -26,6 +25,11 @@ export const DrawerMenu: FC<DrawerMenuProps> = ({ open, onClose }) => {
     (state: RootState) => state.auth.isAuthenticated
   );
   const user = useSelector((state: RootState) => state.user);
+
+  const logOutFunc = () => {
+    dispatch(logOut());
+    navigateTo("/");
+  };
 
   return (
     <Drawer anchor="left" open={open} onClose={onClose}>
@@ -59,12 +63,7 @@ export const DrawerMenu: FC<DrawerMenuProps> = ({ open, onClose }) => {
               variant="contained"
               color="primary"
               fullWidth
-              onClick={() => {
-                dispatch(saveToken("null"));
-                dispatch(setUser(null));
-                dispatch(setAuthState(false));
-                navigateTo("/");
-              }}
+              onClick={logOutFunc}
             >
               Log Out
             </Button>

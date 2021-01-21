@@ -15,13 +15,8 @@ import { CustomTextField } from "../../components";
 import { useStyles } from "./auth.styles";
 import { SignUpFormValues } from "./auth.types";
 import { signUpFormSchema } from "./validationSchema";
-
-import { User } from "../../interfaces/user.interface";
-import http from "../../services/api";
 import { RootState } from "../../store/rootReducer";
-import { saveToken, setAuthState } from "./authSlice";
-import { setUser } from "./userSlice";
-import { AuthResponse } from "../../services/mirage/routes/user";
+import { signUp } from "./authSlice";
 import { useAppDispatch } from "../../store";
 
 const initialValues: SignUpFormValues = {
@@ -39,20 +34,15 @@ const SignUp: FC = () => {
     (state: RootState) => state.auth.isAuthenticated
   );
 
-  const onSubmit = (data: Pick<User, "username" | "email" | "password">) => {
-    http
-      .post<User, AuthResponse>("/auth/login", data)
-      .then((res) => {
-        if (res) {
-          const { user, token } = res;
-          dispatch(saveToken(token));
-          dispatch(setUser(user));
-          dispatch(setAuthState(true));
-        }
+  const onSubmit = (signUpData: SignUpFormValues) => {
+    dispatch(
+      signUp({
+        username: signUpData.username,
+        email: signUpData.email,
+        password: signUpData.password,
       })
-      .catch((error) => {
-        console.log(error);
-      });
+    );
+    navigateTo("/");
   };
 
   if (isLoggedIn) {

@@ -7,8 +7,7 @@ import { BiLogIn, BiLogOut } from "react-icons/bi";
 
 import { RootState } from "../../store/rootReducer";
 import { useAppDispatch } from "../../store";
-import { saveToken, setAuthState } from "../auth/authSlice";
-import { setUser } from "../auth/userSlice";
+import { logOut } from "../auth/authSlice";
 import { DrawerMenu } from "./DrawerMenu";
 import { useStyles } from "./NavBar.styles";
 
@@ -21,10 +20,8 @@ export const NavBar: FC = () => {
     (state: RootState) => state.auth.isAuthenticated
   );
 
-  const logOut = () => {
-    dispatch(saveToken("null"));
-    dispatch(setUser(null));
-    dispatch(setAuthState(false));
+  const logOutFunc = () => {
+    dispatch(logOut());
     navigateTo("/");
   };
 
@@ -52,7 +49,7 @@ export const NavBar: FC = () => {
             Diary App
           </Typography>
           <IconButton
-            onClick={() => (isLoggedIn ? logOut() : navigateTo("/login"))}
+            onClick={() => (isLoggedIn ? logOutFunc() : navigateTo("/login"))}
             className={classes.logInBtn}
             edge="start"
             color="inherit"

@@ -15,12 +15,8 @@ import { CustomTextField } from "../../components";
 import { useStyles } from "./auth.styles";
 import { LogInFormValues } from "./auth.types";
 import { logInFormSchema } from "./validationSchema";
-import { User } from "../../interfaces/user.interface";
-import http from "../../services/api";
 import { RootState } from "../../store/rootReducer";
-import { saveToken, setAuthState } from "./authSlice";
-import { setUser } from "./userSlice";
-import { AuthResponse } from "../../services/mirage/routes/user";
+import { logIn } from "./authSlice";
 import { useAppDispatch } from "../../store";
 
 const initialValues: LogInFormValues = {
@@ -36,21 +32,9 @@ const LogIn: FC = () => {
     (state: RootState) => state.auth.isAuthenticated
   );
 
-  const onSubmit = (data: LogInFormValues) => {
-    http
-      .post<User, AuthResponse>("/auth/login", data)
-      .then((res) => {
-        if (res) {
-          const { user, token } = res;
-          dispatch(saveToken(token));
-          dispatch(setUser(user));
-          dispatch(setAuthState(true));
-          navigateTo("/");
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  const onSubmit = (logInData: LogInFormValues) => {
+    dispatch(logIn(logInData));
+    navigateTo("/");
   };
 
   if (isLoggedIn) {
