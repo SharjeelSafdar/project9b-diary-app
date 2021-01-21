@@ -15,8 +15,10 @@ import { useDiariesStyles } from "./styles";
 
 const Diaries: FC = () => {
   const dispatch = useAppDispatch();
-  const diaries = useSelector((state: RootState) => state.diaries);
   const user = useSelector((state: RootState) => state.user);
+  const diaries = useSelector((state: RootState) => state.diaries).filter(
+    (diary) => diary.userId === user?.id
+  );
   const classes = useDiariesStyles();
 
   useEffect(() => {
