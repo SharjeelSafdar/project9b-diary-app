@@ -147,33 +147,3 @@ const diaries = createSlice({
 export const { updateDiary, setDiaries } = diaries.actions;
 
 export default diaries.reducer;
-
-// const initialState: Diary[] = [
-//   {
-//     entryIds: [],
-//     title: "D1",
-//     type: "public",
-//     createdAt: current,
-//     updatedAt: current,
-//     id: "100",
-//     userId: "1",
-//   },
-//   {
-//     entryIds: [],
-//     title: "D2",
-//     type: "public",
-//     createdAt: current,
-//     updatedAt: current,
-//     id: "101",
-//     userId: "1",
-//   },
-//   {
-//     entryIds: [],
-//     title: "D3",
-//     type: "public",
-//     createdAt: current,
-//     updatedAt: current,
-//     id: "102",
-//     userId: "1",
-//   },
-// ];
