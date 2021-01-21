@@ -35,8 +35,10 @@ export const editDiary = createAsyncThunk(
 
 export const deleteDiary = createAsyncThunk(
   "diaries/deleteDiary",
-  async (diaryId: string) => {
-    await http.delete<null, null>(`/diaries/${diaryId}`);
+  async (diaryId: string, { dispatch }) => {
+    await http.delete<null, User>(`/diaries/${diaryId}`).then((user) => {
+      dispatch(setUser(user));
+    });
     return { diaryId };
   }
 );

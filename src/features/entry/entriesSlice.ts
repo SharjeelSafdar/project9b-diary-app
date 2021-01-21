@@ -52,8 +52,12 @@ export const editEntry = createAsyncThunk(
 
 export const deleteEntry = createAsyncThunk(
   "entries/deleteEntry",
-  async (entryId: string) => {
-    await http.delete<null, null>(`/entries/${entryId}`);
+  async (entryId: string, { dispatch }) => {
+    await http
+      .delete<null, Diary>(`/entries/${entryId}`)
+      .then((updatedDiary) => {
+        dispatch(updateDiary(updatedDiary));
+      });
     return entryId;
   }
 );

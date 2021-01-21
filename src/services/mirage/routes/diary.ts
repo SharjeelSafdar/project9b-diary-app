@@ -112,3 +112,29 @@ export const updateEntry = (schema: any, req: Request): Entry | Response => {
     return handleErrors(error, "Failed to update entry.");
   }
 };
+
+export const deleteDiary = (schema: any, req: Request): User | Response => {
+  try {
+    const diary = schema.diaries.find(req.params.diaryId);
+    const userId = diary.userId;
+    diary.destroy();
+    const user = schema.users.find(userId);
+
+    return user.attrs as User;
+  } catch (error) {
+    return handleErrors(error, "Failed to delete diary.");
+  }
+};
+
+export const deleteEntry = (schema: any, req: Request): Diary | Response => {
+  try {
+    const entry = schema.entries.find(req.params.entryId);
+    const diaryId = entry.diaryId;
+    entry.destroy();
+    const diary = schema.diaries.find(diaryId);
+
+    return diary.attrs as Diary;
+  } catch (error) {
+    return handleErrors(error, "Failed to delete entry.");
+  }
+};
