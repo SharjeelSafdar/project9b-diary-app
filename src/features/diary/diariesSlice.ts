@@ -104,7 +104,7 @@ const diaries = createSlice({
         });
       } else {
         Swal.fire({
-          titleText: "Cancelled",
+          titleText: "Diary not found.",
         });
       }
     },

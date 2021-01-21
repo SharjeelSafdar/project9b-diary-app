@@ -71,10 +71,7 @@ const entries = createSlice({
       state,
       { payload }: PayloadAction<Entry[]>
     ) => {
-      const entriesToSave = payload.filter(
-        (entry) => state.findIndex((item) => item.id === entry.id) === -1
-      );
-      state.unshift(...entriesToSave);
+      state = payload;
     },
     [addNewEntry.fulfilled.type]: (
       state,
@@ -106,7 +103,7 @@ const entries = createSlice({
         });
       } else {
         Swal.fire({
-          titleText: "Cancelled",
+          titleText: "Entry not found.",
         });
       }
     },
