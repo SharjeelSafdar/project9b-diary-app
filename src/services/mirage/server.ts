@@ -1,4 +1,5 @@
 import { Server, Model, Factory, belongsTo, hasMany, Response } from "miragejs";
+import dayjs from "dayjs";
 
 import user from "./routes/user";
 import * as diary from "./routes/diary";
@@ -36,10 +37,19 @@ export const setupServer = (env?: string): Server => {
         password: "password",
         email: "test@email.com",
       }),
+      diary: Factory.extend({
+        userId: "1",
+        title: (i: number) => `Sample Diary ${i}`,
+        type: (i: number) => (i % 2 === 0 ? "public" : "private"),
+        entryIds: [],
+        createdAt: () => dayjs().format(),
+        updatedAt: () => dayjs().format(),
+      }),
     },
 
     seeds: (server): any => {
       server.create("user");
+      server.createList("diary", 5);
     },
 
     routes(): void {
