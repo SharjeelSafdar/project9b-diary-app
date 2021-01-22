@@ -1,46 +1,30 @@
-# Getting Started with Create React App
+## Project 9B: Diaries App Using React and Redux Toolkit with TypeScript
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). It was created for submission in Pana Cloud Bootcamp 2020.
 
-## Available Scripts
+### Link to Web App
 
-In the project directory, you can run:
+The web app has been deployed to Netlify, and can be accessed [here](https://project9b-diary-app.netlify.app/).
 
-### `yarn start`
+### Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The following are some of the features of this project:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Uses Redux for state management
+- Uses [Async Thunks](https://redux-toolkit.js.org/api/createAsyncThunk) in redux slices for handling API requests
+- Uses [MirageJS](https://miragejs.com/) as a fake API for the app
+- CI/CD pipeline with Github Workflows
+- Completely typed with Typescript
+- Completely interactive and responsive design with [Material-UI](https://material-ui.com/) components.
 
-### `yarn test`
+### Learning Outcomes
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The following are some of the learning outcomes of this project:
 
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Using Redux for state management
+- Creating an API mocking server with [MirageJS](https://miragejs.com/)
+- Separating API calls from components making them more readable and concise using [Async Thunks](https://redux-toolkit.js.org/api/createAsyncThunk) in slices
+- Using [Formik](https://formik.org/docs/overview) to create forms without boiler plate code
+- Using [Yup](https://github.com/jquense/yup) for form validation in a concise and declarative way
+- Using Typescript to develop a typed web app
+- Building a web app with React.JS, [React Icons](https://react-icons.github.io/react-icons/), [Material-UI](https://material-ui.com/), [Redux Toolkit](https://redux-toolkit.js.org/) etc.
