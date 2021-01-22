@@ -10,7 +10,7 @@ The web app has been deployed to Netlify, and can be accessed [here](https://pro
 
 The following are some of the features of this project:
 
-- Uses Redux for state management
+- Uses [Redux](https://redux-toolkit.js.org/) for state management
 - Uses [Async Thunks](https://redux-toolkit.js.org/api/createAsyncThunk) in redux slices for handling API requests
 - Uses [MirageJS](https://miragejs.com/) as a fake API for the app
 - CI/CD pipeline with Github Workflows
@@ -21,7 +21,7 @@ The following are some of the features of this project:
 
 The following are some of the learning outcomes of this project:
 
-- Using Redux for state management
+- Using [Redux](https://redux-toolkit.js.org/) for state management
 - Creating an API mocking server with [MirageJS](https://miragejs.com/)
 - Separating API calls from components making them more readable and concise using [Async Thunks](https://redux-toolkit.js.org/api/createAsyncThunk) in slices
 - Using [Formik](https://formik.org/docs/overview) to create forms without boiler plate code
